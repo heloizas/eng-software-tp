@@ -38,16 +38,36 @@ void Comandos::executarComando(string comando, Base &base) {
     tipoComando(comando);
 }
 
-void Comandos::executarComandoDireto(string comando, Base &base) {
+void Comandos::verificaComandoAtivar(string comando, Base &base){
     if(comando.find("ATIVAR") != string::npos) {
         comandoAtivar(comando, base);
-    } else if(comando.find("EXECUTAR") != string::npos) {
+    }
+}
+
+void Comandos::verificaComandoExecutar(string comando, Base &base){
+    if(comando.find("EXECUTAR") != string::npos) {
         comandoExecutar(comando, base);
-    } else if(comando.find("RELATORIO") != string::npos) {
+    } 
+}
+
+void Comandos::verificaComandoRelatorio(string comando, Base &base){
+    if(comando.find("RELATORIO") != string::npos) {
         comandoRelatorio(comando, base);
-    } else if(comando.find("RETORNAR") != string::npos) {
+    }
+}
+
+void Comandos::verificaComandoRetornar(string comando, Base &base){
+    if(comando.find("RETORNAR") != string::npos) {
         comandoRetornar(comando, base);
     }
+}
+
+
+void Comandos::executarComandoDireto(string comando, Base &base) {
+    verificaComandoAtivar(comando, base);
+    verificaComandoExecutar(comando, base);
+    verificaComandoRelatorio(comando, base);
+    verificaComandoRetornar(comando, base);
 }
 
 void Comandos::executarComandoOrdem(string comando, Base &base, bool prioritaria) {

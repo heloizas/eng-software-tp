@@ -20,6 +20,10 @@ class Comandos {
         void executarComandoDireto(string, Base &base);
         void executarComandoOrdem(string, Base &base, bool);
         int tipoComando(string);
+        void verificaComandoAtivar(string, Base &base);
+        void verificaComandoExecutar(string, Base &base);
+        void verificaComandoRelatorio(string, Base &base);
+        void verificaComandoRetornar(string, Base &base);
         void comandoMover(string, Base &base);
         void comandoColetar(string, Base &base);
         void comandoEliminar(string, Base &base);
