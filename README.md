@@ -1,6 +1,5 @@
 # Engenharia de Software 2 - Trabalho Prático
 Grupo:
-* Bárbara Ramos de Souza
 * Heloiza Aparecida dos Santos
 * Jônatas Henrique dos Santos
 
