@@ -30,23 +30,13 @@ void Mapa::gerarMapa(ifstream &arquivoMapa) {
 	}
 }
 
-string Mapa::encontrarPonto(int x, int y) {
-	string ponto = "";
-	if (x > linhas || y > colunas){
-		ponto = "O ponto solicitado nao existe no mapa";
-	} else if (mapaMatriz[x][y] == recurso){
-		ponto = "Recurso";
-	} else if (mapaMatriz[x][y] == obstaculo){
-		ponto = "Obstaculo";
-	} else if (mapaMatriz[x][y] == inimigo){
-		ponto = "Inimigo";
-	} else if (mapaMatriz[x][y] == vazio){
-		ponto = "Vazio";
-	}
-	else if (mapaMatriz[x][y] == mapaBase){
-		ponto = "Base";
-	}
-    return ponto;
+string Mapa::encontrarPonto(int coordenadaX, int coordenadaY) {
+	if (mapaMatriz[coordenadaX][coordenadaY] == vazio) return "Vazio";
+	if (mapaMatriz[coordenadaX][coordenadaY] == obstaculo) return "Obstaculo";
+	if (mapaMatriz[coordenadaX][coordenadaY] == recurso) return "Recurso";
+	if (mapaMatriz[coordenadaX][coordenadaY] == inimigo) return "Inimigo";
+	if (mapaMatriz[coordenadaX][coordenadaY] == mapaBase) return "Base";
+	if (coordenadaX > linhas || coordenadaY > colunas) return "O ponto solicitado nao existe no mapa";
 }
 
 void Mapa::adicionarPonto(int x, int y) {
