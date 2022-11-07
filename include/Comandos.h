@@ -12,7 +12,9 @@ class Comandos {
         string comandos[MAXTAM];
         string linhaComando;
         int quantidadeComandos;
-        int tipo;
+        int comandoOrdem = 1;
+        int comandoDireto = 2;
+        int comandoPrioritario = 3;
         int idRobo; 
         bool auxPrioritaria;
         void gerarComandos(ifstream &arquivoComandos, Base &base);
@@ -20,6 +22,7 @@ class Comandos {
         void executarComandoDireto(string, Base &base);
         void executarComandoOrdem(string, Base &base, bool);
         int tipoComando(string);
+        bool EhComandoDireto(string);
         void verificaComandoAtivar(string, Base &base);
         void verificaComandoExecutar(string, Base &base);
         void verificaComandoRelatorio(string, Base &base);

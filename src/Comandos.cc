@@ -7,7 +7,6 @@ using namespace std;
 
 Comandos::Comandos(ifstream &arquivoComandos, Base &base) {
     quantidadeComandos = 0;
-    tipo = 1;
     auxPrioritaria = true;
     gerarComandos(arquivoComandos, base);
 }
@@ -80,18 +79,15 @@ void Comandos::executarComandoOrdem(string comando, Base &base, bool prioritaria
     }
 }
 
+bool Comandos::EhComandoDireto(string comando){
+    if ((comando.find("ATIVAR") != string::npos) || (comando.find("EXECUTAR") != string::npos) || (comando.find("RELATORIO") != string::npos) || (comando.find("RETORNAR") != string::npos)) return true;
+    return false;
+}
+
 int Comandos::tipoComando(string comando) {
-    // 1: Comando Ordem
-    // 2: Comando Direto
-    // 3: Comando Prioritário
-    tipo = 1;
-    if (comando[0] == '*'){
-        tipo = 3;
-    } else if ((comando.find("ATIVAR") != string::npos) || (comando.find("EXECUTAR") != string::npos)
-    || (comando.find("RELATORIO") != string::npos) || (comando.find("RETORNAR") != string::npos)) {
-        tipo = 2;
-    }
-    return tipo;
+    if (EhComandoDireto(comando)) return comandoDireto;
+    if (comando[0] == '*') return comandoPrioritario;
+    return comandoOrdem;
 }
 
 // Ordens de Comando
