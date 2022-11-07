@@ -1,5 +1,6 @@
 # Engenharia de Software 2 - Trabalho Prático
 Grupo:
+* Bárbara Ramos de Souza
 * Heloiza Aparecida dos Santos
 * Jônatas Henrique dos Santos
 
@@ -70,3 +71,6 @@ make
 cd bin
 ./run.out mapa.txt comandos.txt
 ```
+
+# Tecnologias utilizadas
+O sistema foi desenvolvido em C++, uma linguagem de programação de alto nível, compilada multi-paradigma e de uso geral. Desde os anos 1990 é uma das linguagens comerciais mais populares, sendo bastante usada também na academia por seu grande desempenho e base de utilizadores.
