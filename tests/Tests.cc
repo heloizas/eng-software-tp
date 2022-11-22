@@ -14,4 +14,12 @@ UTEST(TesteClasseRobo, RoboAtivadoCorretamente) {
   ASSERT_TRUE(RoboTeste.getRoboAtivo());
 }
 
+UTEST(TesteClasseRobo, RoboAtivadoEDesativadoCorretamente) {
+  Robos RoboTeste(1);
+  RoboTeste.ativarRobo();
+  ASSERT_TRUE(RoboTeste.getRoboAtivo());
+  RoboTeste.retornarBase();
+  ASSERT_FALSE(RoboTeste.getRoboAtivo());
+}
+
 UTEST_MAIN();
