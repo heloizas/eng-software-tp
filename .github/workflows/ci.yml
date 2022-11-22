@@ -1,0 +1,40 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: ["*"]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure
+      run: ./configure
+
+    - name: Makefile
+      run: make
+
+    - name: Run utest tests on windows
+      if: runner.os == 'Windows'
+      run:  |
+            cd tests
+            .\tests.out
+    - name: Run utest tests on linux
+      if: runner.os == 'Linux'
+      run: |
+            cd tests
+            ./tests.out
+    - name: Run utest tests on macOS
+      if: runner.os == 'macOS'
+      run: |
+            cd tests
+            ./tests.out
