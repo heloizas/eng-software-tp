@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string>
 
 #ifndef FILA_H
 #define FILA_H

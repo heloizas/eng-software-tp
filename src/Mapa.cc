@@ -37,6 +37,7 @@ string Mapa::encontrarPonto(int coordenadaX, int coordenadaY) {
 	if (mapaMatriz[coordenadaX][coordenadaY] == inimigo) return "Inimigo";
 	if (mapaMatriz[coordenadaX][coordenadaY] == mapaBase) return "Base";
 	if (coordenadaX > linhas || coordenadaY > colunas) return "O ponto solicitado nao existe no mapa";
+	return "";
 }
 
 void Mapa::adicionarPonto(int x, int y) {

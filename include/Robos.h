@@ -34,6 +34,7 @@ class Robos {
         void comandoMover(string, Mapa& mapa);
         void comandoColetar(Mapa& mapa);
         void comandoEliminar(Mapa& mapa);
+        bool getRoboAtivo();
     friend class ListaRobos;
 };
 

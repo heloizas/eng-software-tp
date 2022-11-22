@@ -116,6 +116,10 @@ void Robos::comandoEliminar(Mapa& mapa) {
     filaHistorico[0]->enfileira(auxHistorico);
 }
 
+bool Robos::getRoboAtivo() {
+    return ativo;
+}
+
 Robos::~Robos() {
 
 }
