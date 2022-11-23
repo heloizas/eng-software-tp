@@ -7,7 +7,7 @@
 using namespace std;
  
 class Comandos {
-    private:
+    public:
         static const int MAXTAM = 100;
         string comandos[MAXTAM];
         string linhaComando;
@@ -34,11 +34,9 @@ class Comandos {
         void comandoExecutar(string, Base &base);
         void comandoRelatorio(string, Base &base);
         void comandoRetornar(string, Base &base);
-    public:
         Comandos(ifstream &arquivoComandos, Base &base);
         ~Comandos();
         void imprimirComandos();
-    friend class Mapa;
 };
 
 #endif
