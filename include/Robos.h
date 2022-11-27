@@ -11,8 +11,6 @@ class Robos {
     private:
         int idRobo;
         bool ativo;
-        int posicaoX;
-        int posicaoY;
         int qtdInimigosEliminados;
         int qtdRecursosColetados;
         string auxHistorico;
@@ -21,6 +19,8 @@ class Robos {
         Robos(int);
         ~Robos();
         Fila* filaComandos[1];
+        int posicaoX;
+        int posicaoY;
         bool roboAtivo();
         int qtdRecursos();
         int qtdInimigos();

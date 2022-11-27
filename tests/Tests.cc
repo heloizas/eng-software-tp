@@ -58,8 +58,13 @@ UTEST(TesteClasseRobo, RoboAtivadoEDesativadoCorretamente) {
 
 UTEST(TesteClasseRobo, AdicionaComandoRobo) {
   Robos RoboTeste = criaObjetoRobo();
+  Mapa MapaTeste = criaObjetoMapa();
   RoboTeste.ativarRobo();
-  ASSERT_EQ(RoboTeste.filaComandos[1]->tamanho, 3);
+  RoboTeste.adicionarComando("MOVER 0 (0,1)");
+  RoboTeste.adicionarComando("MOVER 0 (0,2)");
+  RoboTeste.executarRobo(MapaTeste);
+
+  ASSERT_EQ(RoboTeste.posicaoX, 2);
 }
 
 UTEST(TesteClasseComandos, ComandoEhOrdem) {
