@@ -1,0 +1,4 @@
+ATIVAR 0       
+MOVER 0 (1,1)
+MOVER 0 (0,6)
+EXECUTAR 0
