@@ -11,11 +11,11 @@ class Fila {
         int frente;
         int tras;
         static const int MAXTAM = 100;
-        string comandos[MAXTAM]; 
         int tamanho;
     public:
         Fila();
         ~Fila();
+        string comandos[MAXTAM]; 
         void enfileira(string);
         string desenfileira();
         void inserePrioritario(string);
