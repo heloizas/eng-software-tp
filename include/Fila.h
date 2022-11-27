@@ -12,8 +12,9 @@ class Fila {
         int tras;
         static const int MAXTAM = 100;
         string comandos[MAXTAM]; 
-        int tamanho;
+        
     public:
+        int tamanho;
         Fila();
         ~Fila();
         void enfileira(string);

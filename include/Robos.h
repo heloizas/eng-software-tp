@@ -16,11 +16,11 @@ class Robos {
         int qtdInimigosEliminados;
         int qtdRecursosColetados;
         string auxHistorico;
-        Fila* filaComandos[1];
         Fila* filaHistorico[1];
     public:
         Robos(int);
         ~Robos();
+        Fila* filaComandos[1];
         bool roboAtivo();
         int qtdRecursos();
         int qtdInimigos();
