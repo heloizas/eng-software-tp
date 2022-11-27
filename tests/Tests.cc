@@ -59,9 +59,6 @@ UTEST(TesteClasseRobo, RoboAtivadoEDesativadoCorretamente) {
 UTEST(TesteClasseRobo, AdicionaComandoRobo) {
   Robos RoboTeste = criaObjetoRobo();
   RoboTeste.ativarRobo();
-  RoboTeste.adicionarComando("MOVER 0 (2,8)");
-  RoboTeste.adicionarComando("MOVER 0 (3,8)");
-  RoboTeste.adicionarComando("MOVER 0 (4,8)");
   ASSERT_EQ(RoboTeste.filaComandos[1]->tamanho, 3);
 }
 
