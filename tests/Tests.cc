@@ -61,7 +61,7 @@ UTEST(TesteClasseRobo, AdicionaComandoRobo) {
   RoboTeste.ativarRobo();
   RoboTeste.adicionarComando("MOVER 1 (1,8)");
   RoboTeste.adicionarComando("MOVER 1 (2,8)");
-  ASSERT_EQ(RoboTeste.filaComandos[1]->comandos[1], "MOVER 1 (2,8)");
+  ASSERT_EQ(RoboTeste.filaComandos[1], "MOVER 1 (2,8)");
 }
 
 UTEST(TesteClasseComandos, ComandoEhOrdem) {
