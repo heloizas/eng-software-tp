@@ -58,10 +58,14 @@ UTEST(TesteClasseRobo, RoboAtivadoEDesativadoCorretamente) {
 
 UTEST(TesteClasseRobo, AdicionaComandoRobo) {
   Robos RoboTeste = criaObjetoRobo();
+  bool Teste = false;
   RoboTeste.ativarRobo();
   RoboTeste.adicionarComando("MOVER 1 (1,8)");
   RoboTeste.adicionarComando("MOVER 1 (2,8)");
-  ASSERT_EQ(RoboTeste.filaComandos[1]->comandos[1], "MOVER 1 (2,8)");
+  if(strcmp(RoboTeste.filaComandos[1]->comandos[1], "MOVER 1 (2,8)") == 0){
+    Teste = true;
+  }
+  ASSERT_TRUE(Teste);
 }
 
 UTEST(TesteClasseComandos, ComandoEhOrdem) {
