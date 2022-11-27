@@ -56,6 +56,14 @@ UTEST(TesteClasseRobo, RoboAtivadoEDesativadoCorretamente) {
   ASSERT_FALSE(RoboTeste.getRoboAtivo());
 }
 
+UTEST(TesteClasseRobo, AdicionaComandoRobo) {
+  Robos RoboTeste = criaObjetoRobo();
+  RoboTeste.ativarRobo();
+  RoboTeste.adicionarComando("MOVER 1 (1,8)");
+  RoboTeste.adicionarComando("MOVER 1 (2,8)");
+  ASSERT_EQ(RoboTeste.filaComandos[1], "MOVER 1 (2,8)");
+}
+
 UTEST(TesteClasseComandos, ComandoEhOrdem) {
   Comandos ComandoTeste = criaObjetoComandos();
   // Comando ordem = 1
@@ -73,5 +81,6 @@ UTEST(TesteClasseComandos, ComandoEhPrioritario) {
   // Comando prioritario = 3
   ASSERT_EQ(ComandoTeste.tipoComando("*MOVER 1 (1,8)"), 3);
 }
+
 
 UTEST_MAIN();
