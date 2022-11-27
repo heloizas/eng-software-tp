@@ -60,8 +60,8 @@ UTEST(TesteClasseRobo, AdicionaComandoRobo) {
   Robos RoboTeste = criaObjetoRobo();
   Mapa MapaTeste = criaObjetoMapa();
   RoboTeste.ativarRobo();
-  RoboTeste.adicionarComando("MOVER 0 (0,1)");
-  RoboTeste.adicionarComando("MOVER 0 (0,2)");
+  RoboTeste.adicionarComando("MOVER 0 (1,0)");
+  RoboTeste.adicionarComando("MOVER 0 (2,0)");
   RoboTeste.executarRobo(MapaTeste);
 
   ASSERT_EQ(RoboTeste.posicaoX, 2);
