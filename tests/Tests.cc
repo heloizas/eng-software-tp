@@ -70,6 +70,7 @@ UTEST(TesteClasseComandos, ComandoEhDireto) {
 
 UTEST(TesteClasseComandos, ComandoEhPrioritario) {
   Comandos ComandoTeste = criaObjetoComandos();
+  
   // Comando prioritario = 3
   ASSERT_EQ(ComandoTeste.tipoComando("*MOVER 1 (1,8)"), 3);
 }
