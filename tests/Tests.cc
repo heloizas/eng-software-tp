@@ -89,6 +89,30 @@ UTEST(TesteClasseRobo, TesteTamanhoFila) {
   ASSERT_EQ(RoboTeste.filaComandos[0]->tamanho, 3);
 }
 
+UTEST(TesteClasseRobo, TestaQtRecursos) {
+  Robos RoboTeste = criaObjetoRobo();
+  Mapa MapaTeste = criaObjetoMapa();
+  RoboTeste.ativarRobo();
+  RoboTeste.adicionarComando("MOVER 0 (2,4)");
+  RoboTeste.adicionarComando("COLETAR 0");
+  RoboTeste.executarRobo(MapaTeste);
+
+  ASSERT_EQ(RoboTeste.qtdRecursos(), 1);
+}
+
+UTEST(TesteClasseRobo, TestaQtRecursos) {
+  Robos RoboTeste = criaObjetoRobo();
+  Mapa MapaTeste = criaObjetoMapa();
+  RoboTeste.ativarRobo();
+  RoboTeste.adicionarComando("MOVER 0 (2,6)");
+  RoboTeste.adicionarComando("ELIMINAR 0");
+  RoboTeste.adicionarComando("MOVER 0 (2,7)");
+  RoboTeste.adicionarComando("ELIMINAR 0");
+  RoboTeste.executarRobo(MapaTeste);
+
+  ASSERT_EQ(RoboTeste..qtdInimigos(), 2);
+}
+
 UTEST(TesteClasseComandos, ComandoEhOrdem) {
   Comandos ComandoTeste = criaObjetoComandos();
   // Comando ordem = 1
