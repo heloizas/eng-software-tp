@@ -86,7 +86,7 @@ UTEST(TesteClasseRobo, TesteTamanhoFila) {
   RoboTeste.adicionarComando("MOVER 0 (0,2)");
   RoboTeste.adicionarComando("MOVER 0 (0,3)");
 
-  ASSERT_EQ(RoboTeste.filaComandos[1]->tamanho, 3);
+  ASSERT_EQ(RoboTeste.filaComandos[0]->tamanho, 3);
 }
 
 UTEST(TesteClasseComandos, ComandoEhOrdem) {
