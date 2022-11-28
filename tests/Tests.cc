@@ -100,7 +100,7 @@ UTEST(TesteClasseRobo, TestaQtRecursos) {
   ASSERT_EQ(RoboTeste.qtdRecursos(), 1);
 }
 
-UTEST(TesteClasseRobo, TestaQtRecursos) {
+UTEST(TesteClasseRobo, TestaQtInimigos) {
   Robos RoboTeste = criaObjetoRobo();
   Mapa MapaTeste = criaObjetoMapa();
   RoboTeste.ativarRobo();
