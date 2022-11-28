@@ -79,7 +79,7 @@ UTEST(TesteClasseRobo, TestaPosicaoY) {
   ASSERT_EQ(RoboTeste.posicaoY, 3);
 }
 
-UTEST(TesteClasseRobo, TestaPosicaoY) {
+UTEST(TesteClasseRobo, TesteTamanhoFila) {
   Robos RoboTeste = criaObjetoRobo();
   RoboTeste.ativarRobo();
   RoboTeste.adicionarComando("MOVER 0 (0,1)");
