@@ -104,9 +104,9 @@ UTEST(TesteClasseRobo, TestaQtInimigos) {
   Robos RoboTeste = criaObjetoRobo();
   Mapa MapaTeste = criaObjetoMapa();
   RoboTeste.ativarRobo();
-  RoboTeste.adicionarComando("MOVER 0 (2,6)");
+  RoboTeste.adicionarComando("MOVER 0 (4,1)");
   RoboTeste.adicionarComando("ELIMINAR 0");
-  RoboTeste.adicionarComando("MOVER 0 (2,7)");
+  RoboTeste.adicionarComando("MOVER 0 (7,3)");
   RoboTeste.adicionarComando("ELIMINAR 0");
   RoboTeste.executarRobo(MapaTeste);
 
