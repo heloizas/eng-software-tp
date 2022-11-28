@@ -110,7 +110,7 @@ UTEST(TesteClasseRobo, TestaQtRecursos) {
   RoboTeste.adicionarComando("ELIMINAR 0");
   RoboTeste.executarRobo(MapaTeste);
 
-  ASSERT_EQ(RoboTeste..qtdInimigos(), 2);
+  ASSERT_EQ(RoboTeste.qtdInimigos(), 2);
 }
 
 UTEST(TesteClasseComandos, ComandoEhOrdem) {
