@@ -130,8 +130,8 @@ UTEST(TesteClasseRobo, TestComandosVariados) {
   RoboTeste.adicionarComando("MOVER 0 (1,1)");
   RoboTeste.executarRobo(MapaTeste);
   RoboTeste.adicionarComando("MOVER 0 (0,6)");
-  RoboTeste.adicionarComando("*COLETAR 0");
-  RoboTeste.adicionarComando("*MOVER 0 (2,4)");
+  RoboTeste.adicionarComandoPrioritario("COLETAR 0");
+  RoboTeste.adicionarComandoPrioritario("MOVER 0 (2,4)");
   RoboTeste.adicionarComando("MOVER 0 (4,1)");
   RoboTeste.adicionarComando("ELIMINAR 0");
   RoboTeste.executarRobo(MapaTeste);
