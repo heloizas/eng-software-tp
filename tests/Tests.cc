@@ -101,6 +101,19 @@ UTEST(TesteClasseRobo, TesteTamanhoFila)
   ASSERT_EQ(RoboTeste.filaComandos[0]->tamanho, 3);
 }
 
+UTEST(TesteClasseRobo, VerificarRetornoRobo)
+{
+  Robos RoboTeste1 = criaObjetoRobo();
+  Robos RoboTeste2 = criaObjetoRobo();
+
+  RoboTeste1.ativarRobo();
+  RoboTeste2.ativarRobo();
+  RoboTeste2.retornarBase();
+
+  ASSERT_TRUE(RoboTeste1.getRoboAtivo());
+  ASSERT_FALSE(RoboTeste2.getRoboAtivo());
+}
+
 UTEST(TesteClasseComandos, ComandoEhOrdem)
 {
   Comandos ComandoTeste = criaObjetoComandos();
@@ -122,6 +135,16 @@ UTEST(TesteClasseComandos, ComandoEhPrioritario)
   ASSERT_EQ(ComandoTeste.tipoComando("*MOVER 1 (1,8)"), 3);
 }
 
+UTEST(TesteClasseComandos, VerificaFuncaoGerarComandos)
+{
+  Comandos ComandoTeste = criaObjetoComandos();
+  Base BaseTeste = criaObjetoBase();
+  ifstream arquivoComandos("arquivoTesteComandos.txt");
+
+  // Se o arquivo for encontrado corretamente, retorna 0.
+  ASSERT_EQ(ComandoTeste.gerarComandos(arquivoComandos, BaseTeste), 0);
+}
+
 UTEST(TesteClasseMapa, RetornaSeEhPontoVazio)
 {
   Mapa MapaTeste = criaObjetoMapa();
@@ -130,15 +153,39 @@ UTEST(TesteClasseMapa, RetornaSeEhPontoVazio)
   ASSERT_STREQ(cstr, "Vazio");
 }
 
-UTEST(TesteClasseMapa, RetornaSeEhPontoRecurso)
+UTEST(TesteClasseMapa, VerificarTamanhoFilaHistorico)
+{
+  Robos RoboTeste = criaObjetoRobo();
+  Mapa MapaTeste = criaObjetoMapa();
+
+  RoboTeste.adicionarComando("MOVER 0 (3,3)");
+  RoboTeste.adicionarComando("MOVER 0 (3,2)");
+  RoboTeste.executarRobo(MapaTeste);
+
+  int tamanhoFilaHistorico =  RoboTeste.filaHistorico[0]->tamanho;
+
+  ASSERT_EQ(tamanhoFilaHistorico, 2);
+}
+
+UTEST(TesteClasseMapa, VerificaFuncaoGerarMapa)
 {
   Mapa MapaTeste = criaObjetoMapa();
-  string str = MapaTeste.encontrarPonto(3, 3);
-  char *cstr = &str[0];
-  ASSERT_STREQ(cstr, "Recurso");
+  ifstream arquivoMapa("arquivoTesteMapa.txt");
+
+  // Se o arquivo for encontrado corretamente, retorna 0.
+  ASSERT_EQ(MapaTeste.gerarMapa(arquivoMapa), 0);
+}
+
+UTEST(TesteClasseMapa, VerificaTamanhoLinhasEColunas)
+{
+  Mapa MapaTeste = criaObjetoMapa();
+
+  ASSERT_EQ(MapaTeste.linhas, 10);
+  ASSERT_EQ(MapaTeste.colunas, 10);
 }
 
 // TESTES DE INTEGRAÇÃO
+
 UTEST(TesteIntegracao, TestaQtRecursos)
 {
   Robos RoboTeste = criaObjetoRobo();

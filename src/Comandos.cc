@@ -11,15 +11,17 @@ Comandos::Comandos(ifstream &arquivoComandos, Base &base) {
     gerarComandos(arquivoComandos, base);
 }
 
-void Comandos::gerarComandos(ifstream &arquivoComandos, Base &base) {
+int Comandos::gerarComandos(ifstream &arquivoComandos, Base &base) {
     if (arquivoComandos.is_open()){
         while(getline(arquivoComandos, linhaComando)){
             comandos[quantidadeComandos] = linhaComando;
             quantidadeComandos++;
             executarComando(linhaComando, base);
         }
+        return 0;
     } else {
         cout << "Nao foi possivel abrir o arquivo de comandos! Verifique o nome e a localizacao do arquivo." << endl;
+        return 1;
     }
 }
 

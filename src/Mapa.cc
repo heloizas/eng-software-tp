@@ -18,15 +18,17 @@ Mapa::Mapa(ifstream &arquivoMapa) {
 	gerarMapa(arquivoMapa);
 }
 
-void Mapa::gerarMapa(ifstream &arquivoMapa) {
+int Mapa::gerarMapa(ifstream &arquivoMapa) {
 	if (arquivoMapa.is_open()){
 		for(int i=0; i<linhas; i++) {
 			for(int j=0; j<colunas; j++) { 
 				arquivoMapa >> mapaMatriz[i][j];
 			}
 		}
+		return 0;
 	} else {
 		cout << "Nao foi possivel abrir o arquivo do mapa! Verifique o nome e a localizacao do arquivo." << endl;
+		return 1;
 	}
 }
 

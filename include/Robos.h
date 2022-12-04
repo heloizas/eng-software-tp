@@ -14,8 +14,8 @@ class Robos {
         int qtdInimigosEliminados;
         int qtdRecursosColetados;
         string auxHistorico;
-        Fila* filaHistorico[1];
     public:
+        Fila* filaHistorico[1];
         Robos(int);
         ~Robos();
         Fila* filaComandos[1];

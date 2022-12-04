@@ -9,11 +9,11 @@ using namespace std;
 class Mapa {
     private:
         char mapaBase, recurso, obstaculo, inimigo, vazio;
-        int linhas, colunas;
         static const int MAXTAM = 100;
         char mapaMatriz[MAXTAM][MAXTAM];
-        void gerarMapa(ifstream &arquivoMapa);
     public:
+        int linhas, colunas;
+        int gerarMapa(ifstream &arquivoMapa);
         Mapa(ifstream &arquivoMapa);
         ~Mapa();
         string encontrarPonto(int, int);

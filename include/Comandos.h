@@ -17,7 +17,7 @@ class Comandos {
         int comandoPrioritario = 3;
         int idRobo; 
         bool auxPrioritaria;
-        void gerarComandos(ifstream &arquivoComandos, Base &base);
+        int gerarComandos(ifstream &arquivoComandos, Base &base);
         void executarComando(string, Base &base);
         void executarComandoDireto(string, Base &base);
         void executarComandoOrdem(string, Base &base, bool);
