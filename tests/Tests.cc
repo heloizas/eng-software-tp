@@ -122,6 +122,22 @@ UTEST(TesteClasseComandos, ComandoEhPrioritario)
   ASSERT_EQ(ComandoTeste.tipoComando("*MOVER 1 (1,8)"), 3);
 }
 
+UTEST(TesteClasseMapa, RetornaSeEhPontoVazio)
+{
+  Mapa MapaTeste = criaObjetoMapa();
+  string str = MapaTeste.encontrarPonto(1, 1);
+  char *cstr = &str[0];
+  ASSERT_STREQ(cstr, "Vazio");
+}
+
+UTEST(TesteClasseMapa, RetornaSeEhPontoRecurso)
+{
+  Mapa MapaTeste = criaObjetoMapa();
+  string str = MapaTeste.encontrarPonto(3, 3);
+  char *cstr = &str[0];
+  ASSERT_STREQ(cstr, "Recurso");
+}
+
 // TESTES DE INTEGRAÇÃO
 UTEST(TesteIntegracao, TestaQtRecursos)
 {
