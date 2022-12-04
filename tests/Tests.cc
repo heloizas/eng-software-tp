@@ -266,4 +266,27 @@ UTEST(TesteIntegracao, TestaComandosPreBase)
   RoboTeste.retornarBase();
 }
 
+UTEST(TesteIntegracao, TestaRetornoBaseCompleto)
+{
+  Robos RoboTeste = criaObjetoRobo();
+  Mapa MapaTeste = criaObjetoMapa();
+  RoboTeste.ativarRobo();
+
+  RoboTeste.adicionarComando("MOVER 0 (1,1)");
+  RoboTeste.executarRobo(MapaTeste);
+  RoboTeste.adicionarComando("MOVER 0 (0,6)");
+  RoboTeste.adicionarComandoPrioritario("COLETAR 0");
+  RoboTeste.adicionarComandoPrioritario("MOVER 0 (2,4)");
+  RoboTeste.adicionarComando("MOVER 0 (4,1)");
+  RoboTeste.adicionarComando("ELIMINAR 0");
+  RoboTeste.executarRobo(MapaTeste);
+  
+  RoboTeste.retornarBase();
+  ASSERT_EQ(RoboTeste.qtdInimigos(), 0);
+  ASSERT_EQ(RoboTeste.qtdRecursos(), 0);
+  ASSERT_EQ(RoboTeste.posicaoX, 0);
+  ASSERT_EQ(RoboTeste.posicaoY, 0);
+  ASSERT_EQ(RoboTeste.roboAtivo(), 0);
+}
+
 UTEST_MAIN();
