@@ -242,4 +242,28 @@ UTEST(TesteIntegracao, TestComandosVariados)
   ASSERT_FALSE(RoboTeste.getRoboAtivo());
 }
 
+UTEST(TesteIntegracao, TestaComandosPreBase)
+{
+  Robos RoboTeste = criaObjetoRobo();
+  Mapa MapaTeste = criaObjetoMapa();
+  RoboTeste.ativarRobo();
+
+  RoboTeste.adicionarComando("MOVER 0 (1,1)");
+  RoboTeste.executarRobo(MapaTeste);
+  RoboTeste.adicionarComando("MOVER 0 (0,6)");
+  RoboTeste.adicionarComandoPrioritario("COLETAR 0");
+  RoboTeste.adicionarComandoPrioritario("MOVER 0 (2,4)");
+  RoboTeste.adicionarComando("MOVER 0 (4,1)");
+  RoboTeste.adicionarComando("ELIMINAR 0");
+  RoboTeste.executarRobo(MapaTeste);
+
+  ASSERT_EQ(RoboTeste.qtdInimigos(), 1);
+  ASSERT_EQ(RoboTeste.qtdRecursos(), 1);
+  ASSERT_EQ(RoboTeste.posicaoX, 4);
+  ASSERT_EQ(RoboTeste.posicaoY, 1);
+  ASSERT_EQ(RoboTeste.roboAtivo(), 1);
+  
+  RoboTeste.retornarBase();
+}
+
 UTEST_MAIN();
