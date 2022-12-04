@@ -10,26 +10,30 @@
 
 // https://github.com/sheredom/utest.h
 
-Robos criaObjetoRobo() {
-   Robos RoboTeste(1);
-   return RoboTeste;
+Robos criaObjetoRobo()
+{
+  Robos RoboTeste(1);
+  return RoboTeste;
 }
 
-Base criaObjetoBase() {
+Base criaObjetoBase()
+{
   ifstream arquivoMapa("arquivoTesteMapa.txt");
   Base BaseTeste(arquivoMapa);
   arquivoMapa.close();
   return BaseTeste;
 }
 
-Mapa criaObjetoMapa() {
+Mapa criaObjetoMapa()
+{
   ifstream arquivoMapa("arquivoTesteMapa.txt");
   Mapa MapaTeste(arquivoMapa);
   arquivoMapa.close();
   return MapaTeste;
 }
 
-Comandos criaObjetoComandos() {
+Comandos criaObjetoComandos()
+{
   ifstream arquivoComandos("arquivoTesteComandos.txt");
   Base BaseTeste = criaObjetoBase();
   Comandos ComandoTeste(arquivoComandos, BaseTeste);
@@ -37,18 +41,23 @@ Comandos criaObjetoComandos() {
   return ComandoTeste;
 }
 
-UTEST(TesteClasseRobo, RoboIniciaDesativado) {
+// TESTES UNITÁRIOS
+
+UTEST(TesteClasseRobo, RoboIniciaDesativado)
+{
   Robos RoboTeste = criaObjetoRobo();
   ASSERT_FALSE(RoboTeste.getRoboAtivo());
 }
 
-UTEST(TesteClasseRobo, RoboAtivadoCorretamente) {
+UTEST(TesteClasseRobo, RoboAtivadoCorretamente)
+{
   Robos RoboTeste = criaObjetoRobo();
   RoboTeste.ativarRobo();
   ASSERT_TRUE(RoboTeste.getRoboAtivo());
 }
 
-UTEST(TesteClasseRobo, RoboAtivadoEDesativadoCorretamente) {
+UTEST(TesteClasseRobo, RoboAtivadoEDesativadoCorretamente)
+{
   Robos RoboTeste = criaObjetoRobo();
   RoboTeste.ativarRobo();
   ASSERT_TRUE(RoboTeste.getRoboAtivo());
@@ -56,7 +65,8 @@ UTEST(TesteClasseRobo, RoboAtivadoEDesativadoCorretamente) {
   ASSERT_FALSE(RoboTeste.getRoboAtivo());
 }
 
-UTEST(TesteClasseRobo, TestaPosicaoX) {
+UTEST(TesteClasseRobo, TestaPosicaoX)
+{
   Robos RoboTeste = criaObjetoRobo();
   Mapa MapaTeste = criaObjetoMapa();
   RoboTeste.ativarRobo();
@@ -67,7 +77,8 @@ UTEST(TesteClasseRobo, TestaPosicaoX) {
   ASSERT_EQ(RoboTeste.posicaoX, 2);
 }
 
-UTEST(TesteClasseRobo, TestaPosicaoY) {
+UTEST(TesteClasseRobo, TestaPosicaoY)
+{
   Robos RoboTeste = criaObjetoRobo();
   Mapa MapaTeste = criaObjetoMapa();
   RoboTeste.ativarRobo();
@@ -79,7 +90,8 @@ UTEST(TesteClasseRobo, TestaPosicaoY) {
   ASSERT_EQ(RoboTeste.posicaoY, 3);
 }
 
-UTEST(TesteClasseRobo, TesteTamanhoFila) {
+UTEST(TesteClasseRobo, TesteTamanhoFila)
+{
   Robos RoboTeste = criaObjetoRobo();
   RoboTeste.ativarRobo();
   RoboTeste.adicionarComando("MOVER 0 (0,1)");
@@ -89,7 +101,30 @@ UTEST(TesteClasseRobo, TesteTamanhoFila) {
   ASSERT_EQ(RoboTeste.filaComandos[0]->tamanho, 3);
 }
 
-UTEST(TesteClasseRobo, TestaQtRecursos) {
+UTEST(TesteClasseComandos, ComandoEhOrdem)
+{
+  Comandos ComandoTeste = criaObjetoComandos();
+  // Comando ordem = 1
+  ASSERT_EQ(ComandoTeste.tipoComando("MOVER 0 (2,8)"), 1);
+}
+
+UTEST(TesteClasseComandos, ComandoEhDireto)
+{
+  Comandos ComandoTeste = criaObjetoComandos();
+  // Comando direto = 2
+  ASSERT_EQ(ComandoTeste.tipoComando("ATIVAR 0"), 2);
+}
+
+UTEST(TesteClasseComandos, ComandoEhPrioritario)
+{
+  Comandos ComandoTeste = criaObjetoComandos();
+  // Comando prioritario = 3
+  ASSERT_EQ(ComandoTeste.tipoComando("*MOVER 1 (1,8)"), 3);
+}
+
+// TESTES DE INTEGRAÇÃO
+UTEST(TesteIntegracao, TestaQtRecursos)
+{
   Robos RoboTeste = criaObjetoRobo();
   Mapa MapaTeste = criaObjetoMapa();
   RoboTeste.ativarRobo();
@@ -104,7 +139,8 @@ UTEST(TesteClasseRobo, TestaQtRecursos) {
   ASSERT_FALSE(RoboTeste.getRoboAtivo());
 }
 
-UTEST(TesteClasseRobo, TestaQtInimigos) {
+UTEST(TesteIntegracao, TestaQtInimigos)
+{
   Robos RoboTeste = criaObjetoRobo();
   Mapa MapaTeste = criaObjetoMapa();
   RoboTeste.ativarRobo();
@@ -121,11 +157,12 @@ UTEST(TesteClasseRobo, TestaQtInimigos) {
   ASSERT_FALSE(RoboTeste.getRoboAtivo());
 }
 
-UTEST(TesteClasseRobo, TestComandosVariados) {
+UTEST(TesteIntegracao, TestComandosVariados)
+{
   Robos RoboTeste = criaObjetoRobo();
   Mapa MapaTeste = criaObjetoMapa();
   RoboTeste.ativarRobo();
-  ASSERT_TRUE(RoboTeste.getRoboAtivo());     
+  ASSERT_TRUE(RoboTeste.getRoboAtivo());
 
   RoboTeste.adicionarComando("MOVER 0 (1,1)");
   RoboTeste.executarRobo(MapaTeste);
@@ -141,25 +178,5 @@ UTEST(TesteClasseRobo, TestComandosVariados) {
   RoboTeste.retornarBase();
   ASSERT_FALSE(RoboTeste.getRoboAtivo());
 }
-
-UTEST(TesteClasseComandos, ComandoEhOrdem) {
-  Comandos ComandoTeste = criaObjetoComandos();
-  // Comando ordem = 1
-  ASSERT_EQ(ComandoTeste.tipoComando("MOVER 0 (2,8)"), 1);
-}
-
-UTEST(TesteClasseComandos, ComandoEhDireto) {
-  Comandos ComandoTeste = criaObjetoComandos();
-  // Comando direto = 2
-  ASSERT_EQ(ComandoTeste.tipoComando("ATIVAR 0"), 2);
-}
-
-UTEST(TesteClasseComandos, ComandoEhPrioritario) {
-  Comandos ComandoTeste = criaObjetoComandos();
-  
-  // Comando prioritario = 3
-  ASSERT_EQ(ComandoTeste.tipoComando("*MOVER 1 (1,8)"), 3);
-}
-
 
 UTEST_MAIN();
